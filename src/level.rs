@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum LogLevels {
     DEBUG = 0,
     WARN = 1,
