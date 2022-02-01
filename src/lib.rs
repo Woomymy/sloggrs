@@ -1,6 +1,7 @@
 //! Sloggrs - Simple logger
 
 pub mod level;
+pub mod macros;
 pub use level::LogLevels;
 use std::sync::atomic::{AtomicU8, Ordering};
 
@@ -37,7 +38,7 @@ pub fn init(loglevel: Option<LogLevels>) {
 macro_rules! log {
     ($level:tt, $($arg:tt)*) => {
         if $crate::can_log($crate::LogLevels::$level) {
-            println!("{}", $($arg)*)
+            println!("{}", format!($($arg)*))
         }
     };
 }
