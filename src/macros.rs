@@ -10,7 +10,7 @@ macro_rules! debug {
             file!(),
             line!(),
             column!(),
-            $($arg)*
+            format!($($arg)*)
         )
     };
 }
@@ -25,7 +25,7 @@ macro_rules! warn {
             file!(),
             line!(),
             column!(),
-            $($arg)*
+            format!($($arg)*)
         )
     };
 }
@@ -37,7 +37,7 @@ macro_rules! info {
         $crate::log!(
             INFO,
             "\x1b[96m{}\x1b[m",
-            $($arg)*
+            format!($($arg)*)
         )
     };
 }
@@ -49,7 +49,7 @@ macro_rules! error {
         $crate::log!(
             ERROR,
             "\x1b[91m{}\x1b[m",
-            $($arg)*
+            format!($($arg)*)
         )
     };
 }
@@ -65,7 +65,7 @@ macro_rules! fatal {
             file!(),
             line!(),
             column!(),
-            $($arg)*
+            format!($($arg)*)
         )
     };
 }
