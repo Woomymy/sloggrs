@@ -13,17 +13,18 @@ pub static LOG_LEVEL: AtomicU8 = AtomicU8::new(0);
 #[macro_export]
 macro_rules! init {
     () => {
-        $crate::init(None)
+        $crate::init_with_level(None)
     };
     ($arg:tt) => {
-        $crate::init(Some($crate::LogLevels::$arg))
+        $crate::init_with_level(Some($crate::LogLevels::$arg))
     };
 }
 
 /**
- * Initialise logger
+ * Initialise logger with level
  */
-pub fn init(loglevel: Option<LogLevels>) {
+#[doc(hidden)]
+pub fn init_with_level(loglevel: Option<LogLevels>) {
     if let Some(level) = loglevel {
         LOG_LEVEL.store(level as u8, Ordering::Relaxed);
     } else {
